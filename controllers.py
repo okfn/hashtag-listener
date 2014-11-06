@@ -15,11 +15,11 @@ def index():
 def api():
     auth = request.headers.get('Authorization')
     if auth != app.config['APIKEY']:
-        abort(403)
-    data = request.get_json()
+        return json.dumps({'success': False, 'message': 'Not authorized'}), 400
+    data = request.get_json(force=True)
     if not data:
         return json.dumps({'success': False, 'message': 'JSON data not found '
-                           'or mimetype not set'})
+                           'or mimetype not set'}), 400
     try:
         entry = m.Entry(
             username=data.get('username'),
@@ -28,7 +28,7 @@ def api():
         )
     except m.ValidationError:
         return json.dumps({'success': False, 'message': 'Validation error with'
-                          ' the data provided'})
+                          ' the data provided'}), 400
     db.session.add(entry)
     db.session.commit()
     return json.dumps({'success': True})
