@@ -8,7 +8,7 @@ def index():
     params = {
         'title': 'Hashtag Listener',
     }
-    return render_template('index.html',**params)
+    return render_template('index.html', **params)
 
 
 @app.route('/api', methods=['POST'])
@@ -21,8 +21,11 @@ def api():
         return json.dumps({'success': False, 'message': 'JSON data not found '
                            'or mimetype not set'})
     try:
-        entry = m.Entry(username=data.get('username'), entry_type=data.get('type'),
-                      entry_text=data.get('text'))
+        entry = m.Entry(
+            username=data.get('username'),
+            entry_type=data.get('type'),
+            entry_text=data.get('text')
+        )
     except m.ValidationError:
         return json.dumps({'success': False, 'message': 'Validation error with'
                           ' the data provided'})
@@ -35,7 +38,8 @@ def api():
 def entry_show(name=None):
     params = {
         'title': ''.join(['#', name]),
-        'data': m.Entry.query.filter_by(entry_type=name).order_by(m.Entry.created.desc()).all()
+        'data': m.Entry.query.filter_by(entry_type=name)
+                       .order_by(m.Entry.created.desc()).all()
     }
     return render_template('entry.html', **params)
 

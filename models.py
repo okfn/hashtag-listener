@@ -2,6 +2,7 @@ from datetime import datetime
 from sqlalchemy import DateTime
 from app import db
 
+
 class Entry(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40))
@@ -19,6 +20,7 @@ class Entry(db.Model):
 
     def __repr__(self):
         return '<Entry %r>' % self.id
+
 
 class ValidationError(Exception):
     def __init__(self, value):
