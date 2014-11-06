@@ -1,0 +1,25 @@
+{% extends 'page.html' %}
+{% block content %}
+  <div class="row">
+    <div class="large-12 columns">
+      <table>
+        <thead>
+          <tr>
+            <th>name</th>
+            <th>text</th>
+            <th>date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in data %}
+          <tr>
+            <td>{{ row.username }}</td>
+            <td>{{ row.entry_text }}</td>
+            <td>{{ row.created }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'page.html' %}
+{% block content %}
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="panel">
+        <p>
+          There are different hashtags that this app listens from Mowgli. To
+          add a new hashatag to listen to, make changes in mowglibot and add
+          a section here.
+        </p>
+        <div class="row">
+          <div class="large-4 medium-4 columns">
+            <p><a href="{{ url_for('entry_show', name='success') }}">#success</a><br />Sharing the successes across the organization!</p>
+        </div>
+        <div class="large-4 medium-4 columns">
+          <p><a href="{{ url_for('entry_show', name='lessonslearnt') }}">#LesssonsLearnt</a><br />Collective lessons learned from our unique experiences</p>
+        </div>
+        <div class="large-4 medium-4 columns">
+          <p><a href="{{ url_for('entry_show', name='nowreading') }}">#NowReading</a><br />Share the interesting articles and books your come across!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
