@@ -6,7 +6,7 @@ from app import db
 class Entry(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40))
-    entry_type = db.Column(db.String(4))
+    entry_type = db.Column(db.String(40))
     entry_text = db.Column(db.Text())
     created = db.Column(DateTime, default=datetime.utcnow(), nullable=False)
 
