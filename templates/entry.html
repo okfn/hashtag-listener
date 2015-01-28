@@ -1,6 +1,11 @@
 {% extends 'page.html' %}
 {% block content %}
+
   <div class="row">
+
+    <div class="large-12 columns">
+      <a href="/" title="Home">Home</a>
+    </div>
     <div class="large-12 columns">
       <table>
         <thead>
@@ -14,7 +19,7 @@
           {% for row in data %}
           <tr>
             <td>{{ row.username }}</td>
-            <td>{{ row.entry_text }}</td>
+            <td>{{ linkify(row.entry_text)|safe }}</td>
             <td>{{ row.created }}</td>
           </tr>
           {% endfor %}
