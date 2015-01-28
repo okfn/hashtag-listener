@@ -1,11 +1,8 @@
-from flask import render_template, request, abort, json, send_from_directory
+from flask import render_template, request, json, send_from_directory
 from bleach import linkify
 
 from app import app, db
 import models as m
-
-
-
 
 
 @app.route('/')
