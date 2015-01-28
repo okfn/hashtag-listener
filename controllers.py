@@ -1,6 +1,11 @@
 from flask import render_template, request, abort, json, send_from_directory
+from bleach import linkify
+
 from app import app, db
 import models as m
+
+
+
 
 
 @app.route('/')
@@ -39,7 +44,8 @@ def entry_show(name=None):
     params = {
         'title': ''.join(['#', name]),
         'data': m.Entry.query.filter_by(entry_type=name)
-                       .order_by(m.Entry.created.desc()).all()
+                       .order_by(m.Entry.created.desc()).all(),
+        'linkify': linkify,
     }
     return render_template('entry.html', **params)
 

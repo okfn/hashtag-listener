@@ -14,7 +14,7 @@
           {% for row in data %}
           <tr>
             <td>{{ row.username }}</td>
-            <td>{{ row.entry_text }}</td>
+            <td>{{ linkify(row.entry_text)|safe }}</td>
             <td>{{ row.created }}</td>
           </tr>
           {% endfor %}
